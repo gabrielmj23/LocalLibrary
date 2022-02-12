@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include("/partials/head"); %>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body class="container-fluid">
+    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("/partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+
+      </div>
+    </div>
+
+    <footer>
+      <%- include("/partials/footer"); %>
+    </footer>
   </body>
 </html>
