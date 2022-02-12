@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include("/partials/head"); %>
+    <%- include("partials/head"); %>
   </head>
-  <body class="container-fluid">
-    
+  <body class="container-fluid">    
     <div class="row">
       <div class="col-sm-2">
         <header>
-          <%- include("/partials/nav"); %>
+          <%- include("partials/nav"); %>
         </header>
       </div>
       <div class="col-sm-10">
-
+        <h1><%= title %></h1>
+        <p>Welcome to <b>LocalLibrary</b>, a basic Express website built for the MDN NodeJS course</p>
+        <h1>Dynamic Content</h1>
+        <% if (error) { %>
+          <p>Error retrieving the dynamic content</p>
+        <% } else { %>
+          <p>The library has the following records</p>
+          <ul>
+            <li><strong>Books: </strong><%- data.book_count %></li>
+            <li><strong>Copies: </strong><%- data.book_instance_count %></li>
+            <li><strong>Copies available: </strong><%- data.book_instance_available_count %></li>
+            <li><strong>Authors: </strong><%- data.author_count %></li>
+            <li><strong>Genres: </strong><%- data.genre_count %></li>
+          </ul>
+        <% } %>
       </div>
     </div>
-
     <footer>
-      <%- include("/partials/footer"); %>
+      <%- include("partials/footer"); %>
     </footer>
   </body>
 </html>
