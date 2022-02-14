@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head"); %>
+  </head>
+  <body class="container-fluid">    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+        <h1><%= title %></h1>
+        <ul>
+            <% if (author_list.length > 0) { %>
+                <% for (var i = 0; i < author_list.length; i++) { %>
+                    <li>
+                        <a href="<%= author_list[i].url %>"><%= author_list[i].name %></a>
+                        <span><%= author_list[i].lifespan %></span>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li>There are no authors.</li>
+            <% } %>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <%- include("partials/footer"); %>
+    </footer>
+  </body>
+</html>
