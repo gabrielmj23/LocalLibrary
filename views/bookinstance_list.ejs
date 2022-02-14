@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head"); %>
+  </head>
+  <body class="container-fluid">    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+        <h1><%= title %></h1>
+        <ul>
+            <% if (bookinstance_list.length > 0) { %>
+                <% for (var i = 0; i < bookinstance_list.length; i++) { %>
+                    <li>
+                        <a href="<%= bookinstance_list[i].url %>"><%= bookinstance_list[i].book.title %> : <%= bookinstance_list[i].imprint %></a> -
+                        <% if (bookinstance_list[i].status == 'Available') { %>
+                            <span class="text-success"><%= bookinstance_list[i].status %></span>
+                        <% } else if (bookinstance_list[i].status == 'Maintenance') { %>
+                            <span class="text-danger"><%= bookinstance_list[i].status %></span>
+                        <% } else { %>
+                            <span class="text-warning"><%= bookinstance_list[i].status %></span>
+                        <% } %>
+                        <% if (bookinstance_list[i].status != 'Available') { %>
+                            <span>Due: <%= bookinstance_list[i].due_back %></span>
+                        <% } %>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <li>There are no book copies in this library.</li>
+            <% } %>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <%- include("partials/footer"); %>
+    </footer>
+  </body>
+</html>
