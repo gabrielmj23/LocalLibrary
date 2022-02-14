@@ -25,7 +25,7 @@
                             <span class="text-warning"><%= bookinstance_list[i].status %></span>
                         <% } %>
                         <% if (bookinstance_list[i].status != 'Available') { %>
-                            <span>Due: <%= bookinstance_list[i].due_back %></span>
+                            <span>Due: <%= bookinstance_list[i].due_back_formatted %></span>
                         <% } %>
                     </li>
                 <% } %>
