@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head"); %>
+  </head>
+  <body class="container-fluid">    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+        <h1>Author: <%= author.name %></h1>
+        <p><%= author.lifespan %></p>
+        <div style="margin-left: 20px; margin-top: 20px">
+            <h4>Books</h4>
+            <dl>
+                <% if (author_books.length > 0) { %>
+                    <% for (var i = 0; i < author_books.length; i++) { %>
+                        <dt>
+                            <a href="<%= author_books[i].url %>"><%= author_books[i].title %></a>
+                        </dt>
+                        <dd><%= author_books[i].summary %></dd>
+                    <% } %>
+                <% } else { %>
+                    <p>This author has no books.</p>
+                <% } %>
+            </dl>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <%- include("partials/footer"); %>
+    </footer>
+  </body>
+</html>
