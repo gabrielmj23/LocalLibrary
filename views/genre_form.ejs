@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head"); %>
+  </head>
+  <body class="container-fluid">    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+        <h1><%= title %></h1>
+        <form method="post" action="">
+            <div class="form-group">
+                <label for="name">Genre: </label>
+                <% if (typeof genre === 'undefined') { %>
+                    <input id="name" class="form-control" type="text" placeholder="Fantasy, Poetry, etc." name="name">
+                <% } else { %>
+                    <input id="name" class="form-control" type="text" placeholder="Fantasy, Poetry, etc." name="name" value="<%= genre.name %>">
+                <% } %>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <% if (typeof errors !== 'undefined') { %>
+            <ul>
+                <% for (var i = 0; i < errors.length; i++) { %>
+                    <li class="text-danger"><%- errors[i].msg %></li>
+                <% } %>
+            </ul>
+        <% } %>
+      </div>
+    </div>
+    <footer>
+      <%- include("partials/footer"); %>
+    </footer>
+  </body>
+</html>
