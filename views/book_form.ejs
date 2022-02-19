@@ -25,10 +25,10 @@
                     <% for (var i = 0; i < authors.length; i++) { %>
                         <% var author = authors[i] %>
                         <% if (typeof book !== 'undefined') { %>
-                            <% var sel = author._id.toString() === book.author._id.toString() ? 'selected' : false %>
-                            <option value="<%= author._id %>" selected="<%= sel %>"><%= author.name %></option>
+                            <% var sel = (author._id.toString() == book.author._id.toString() || author._id.toString() == book.author) ? 'selected' : false %>
+                            <option value="<%= author._id %>" selected="<%= sel %>"><%- author.name %></option>
                         <% } else { %>
-                            <option value="<%= author._id %>"><%= author.name %></option>
+                            <option value="<%= author._id %>"><%- author.name %></option>
                         <% } %>
                     <% } %>
                 </select>
@@ -36,7 +36,7 @@
             <div class="form-group">
                 <% var summ = typeof book === 'undefined' ? '' : book.summary %>
                 <label for="summary">Summary: </label>
-                <textarea id="summary" class="form-control" type="textarea" placeholder="Summary" name="summary" required="true"><%= summ %></textarea>
+                <textarea id="summary" class="form-control" type="textarea" placeholder="Summary" name="summary" required="true"><%- summ %></textarea>
             </div>
             <div class="form-group">
                 <% var b_isbn = typeof book === 'undefined' ? '' : book.isbn %>
@@ -49,7 +49,7 @@
                     <% for (var i = 0; i < genres.length; i++) { %>
                         <div style="display: inline; padding-right: 10px;">
                             <input class="checkbox-input" type="checkbox" name="genre" id="<%= genres[i]._id %>" value="<%= genres[i]._id %>" checked="<%= genres[i].checked %>">
-                            <label for="<%= genres[i]._id %>"><%= genres[i].name %></label>
+                            <label for="<%= genres[i]._id %>"><%- genres[i].name %></label>
                         </div>
                     <% } %>
                 </div>
@@ -59,7 +59,7 @@
         <% if (typeof errors !== 'undefined') { %>
             <ul>
                 <% for (var i = 0; i < errors.length; i++) { %>
-                    <li class="text-danger"><%= errors[i].msg %></li>
+                    <li class="text-danger"><%- errors[i].msg %></li>
                 <% } %>
             </ul>
         <% } %>
