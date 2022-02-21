@@ -11,26 +11,26 @@
         </header>
       </div>
       <div class="col-sm-10">
-        <h1><%= title %>: <%= author.name %></h1>
-        <p><%= author.lifespan_formatted %></p>
-        <% if (author_books.length > 0) { %>
-            <p><strong>Delete the following books before attempting to delete this author.</strong></p>
+        <h1><%- title %>: <%- book.title %></h1>
+        <p>By <strong><%- book.author.name %></strong></p>
+        <% if (bookinstances.length > 0) { %>
+            <p><strong>Delete the following book instances before attempting to delete this book.</strong></p>
             <div style="margin-left: 20px; margin-top: 20px">
-                <h4>Books</h4>
+                <h4>Book Instances</h4>
                 <dl>
-                    <% for (var i = 0; i < author_books.length; i++) { %>
+                    <% for (var i = 0; i < bookinstances.length; i++) { %>
                         <dt>
-                            <a href="<%= author_books[i].url %>"><%= author_books[i].title %></a>
+                            <a href="<%= bookinstances[i].url %>"><%- bookinstances[i]._id %></a>
                         </dt>
-                        <dd><%= author_books[i].summary %></dd>
+                        <dd><%- bookinstances[i].imprint %></dd>
                     <% } %>
                 </dl>
             </div>
         <% } else { %>
-            <p class="text-danger"><strong>Do you really want to delete this author?</strong></p>
+            <p class="text-danger"><strong>Do you really want to delete this book?</strong></p>
             <form method="post" action="">
                 <div class="form-group">
-                    <input id="authorid" class="form-control" type="hidden" name="authorid" required="true" value="<%= author._id %>">
+                    <input id="bookid" class="form-control" type="hidden" name="bookid" required="true" value="<%- book._id %>">
                 </div>
                 <button class="btn btn-primary" type="submit">Delete</button>
             </form>

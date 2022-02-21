@@ -90,9 +90,7 @@ exports.bookinstance_delete_get = function(req, res, next) {
         if (err) { return next(err); }
         // No results
         if (bookinstance == null) {
-            var err = new Error('Book copy not found');
-            err.status = 404;
-            return next(err);
+            res.redirect('/catalog/bookinstances');
         }
         // Successful, so render
         res.render('bookinstance_delete', {title: 'Delete Book Instance', bookinstance: bookinstance});
