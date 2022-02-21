@@ -133,7 +133,7 @@ exports.genre_delete_post = function(req, res, next) {
 
 // Display Genre update form on GET.
 exports.genre_update_get = function(req, res, next) {
-    Genre.findOne({'_id': req.params.id}).exec(function(err, curGenre) {
+    Genre.findById(req.params.id).exec(function(err, curGenre) {
         if (err) { return next(err); }
         // No results
         if (curGenre == null) {
