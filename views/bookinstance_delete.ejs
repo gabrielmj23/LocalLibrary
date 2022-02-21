@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head"); %>
+  </head>
+  <body class="container-fluid">    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+        <h1><%- title %>: ID <%- bookinstance._id %></h1>
+        <p>For book <strong><%- bookinstance.book.title %></strong></p>
+        <p class="text-danger"><strong>Do you really want to delete this Book Instance?</strong></p>
+        <form method="post" action="">
+            <div class="form-group">
+                <input id="<%- bookinstance._id %>" class="form-control" type="hidden" name="bookinstanceid" required="true" value="<%- bookinstance._id %>">
+            </div>
+            <button class="btn btn-primary" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+    <footer>
+      <%- include("partials/footer"); %>
+    </footer>
+  </body>
+</html>
