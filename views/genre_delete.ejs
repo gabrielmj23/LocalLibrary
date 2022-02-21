@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head"); %>
+  </head>
+  <body class="container-fluid">    
+    <div class="row">
+      <div class="col-sm-2">
+        <header>
+          <%- include("partials/nav"); %>
+        </header>
+      </div>
+      <div class="col-sm-10">
+        <h1><%- title %>: <%- genre.name %></h1>
+        <% if (books.length > 0) { %>
+            <p><strong>Delete the following books before attempting to delete this genre.</strong></p>
+            <div style="margin-left: 20px; margin-top: 20px">
+                <h4>Books</h4>
+                <dl>
+                    <% for (var i = 0; i < books.length; i++) { %>
+                        <dt>
+                            <a href="<%= books[i].url %>"><%- books[i].title %></a>
+                        </dt>
+                        <dd><%- books[i].summary %></dd>
+                    <% } %>
+                </dl>
+            </div>
+        <% } else { %>
+            <p class="text-danger"><strong>Do you really want to delete this genre?</strong></p>
+            <form method="post" action="">
+                <div class="form-group">
+                    <input id="genreid" class="form-control" type="hidden" name="genreid" required="true" value="<%- genre._id %>">
+                </div>
+                <button class="btn btn-primary" type="submit">Delete</button>
+            </form>
+        <% } %>
+      </div>
+    </div>
+    <footer>
+      <%- include("partials/footer"); %>
+    </footer>
+  </body>
+</html>
