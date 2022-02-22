@@ -18,7 +18,6 @@ require('dotenv').config();
 
 // Set up mongoose connection
 var mongoose = require('mongoose');
-const compression = require('compression');
 var dev_db = 'mongodb+srv://gabrielmj:p1p0Hola@locallibrary.l7vvn.mongodb.net/local-library?retryWrites=true&w=majority';
 var mongoDB = process.env.MONGO_URI || dev_db;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
