@@ -34,7 +34,7 @@
                 <input id="imprint" class="form-control" type="text" placeholder="Publisher and date information" name="imprint" required="true" value="<%= imp %>">
             </div>
             <div class="form-group">
-                <% var d_back = (typeof bookinstance === 'undefined') ? '' : bookinstance.due_back; %>
+                <% var d_back = (typeof bookinstance === 'undefined' || typeof bookinstance.due_back === 'undefined') ? '' : bookinstance.due_back; %>
                 <label for="due_back">Date when book available: </label>
                 <input id="due_back" class="form-control" type="date" placeholder="dd/mm/yyyy" name="due_back" value="<%= d_back %>">
             </div>
